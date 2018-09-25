@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    script(src='/javascripts/timeTracker.js')
+
+    h1.tc Welcome to time tracker system!
+    
+    h2 Add new time entry
+
+
+
+    form.pa4.black-80.measure(action="/timetracker/newEntry",method="post",)
+        label.f6.b.db.mb2(for='task')
+        | Task 
+        span.normal.red-60 (required)
+        input#task.input-reset.ba.b--black-20.pa2.mb2.db.w-100(aria-describedby='task-desc',name="task",type='text')
+        small#task-desc.f6.black-60.db.mb2 Enter short description of task
+
+        label.f6.b.db.mb2(for='starttime')
+        | Start Time 
+        span.normal.red-60 (required)
+        input#starttime.input-reset.ba.b--black-20.pa2.mb2.db.w-100(aria-describedby='starttime-desc',name="starttime",type='time')
+        small#starttime-desc.f6.black-60.db.mb2 Enter short description of starttime
+
+        label.f6.b.db.mb2(for='endtime')
+        | End Time 
+        span.normal.red-60 (required)
+        input#endtime.input-reset.ba.b--black-20.pa2.mb2.db.w-100(aria-describedby='endtime-desc',name="endtime",type='time')
+        small#endtime-desc.f6.black-60.db.mb2 Enter short description of endtime
+        
+    button#SubmitNewEntry(type="submit") Submit Entry
+
+    #timeLogList
+        each val in timeEntriesData
+            #timeBlock(data-id=`${val._id}`)
+                h2 Task name - #{val.task}
+                h3 Date - #{val.date}
+                h3 StartTime - #{val.startTime}
+                h3 End Time  - #{val.endTime}
+                

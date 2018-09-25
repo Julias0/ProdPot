@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title ERP
+    link(rel='stylesheet', href='/stylesheets/tachyons.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    block header
+      nav.pa3.pa4-ns
+      a.link.dim.black.b.f1.f-headline-ns.tc.db.mb3.mb4-ns(href='/', title='Home') Welcome to ERP!
+      .tc.pb3
+        a.link.dim.gray.f6.f5-ns.dib.mr3(href='/timetracker', title='TimeTracker') TimeTracker
+        a.link.dim.gray.f6.f5-ns.dib.mr3(href='#', title='Boards') Boards
+        a.link.dim.gray.f6.f5-ns.dib.mr3(href='#', title='Contact') Contact Us
+        if user
+          a.link.dim.gray.f6.f5-ns.dib.mr3(href='/logout') Logout
+          .gray.f6.f5-ns.dib.mr3 Logged in as #{user.name}
+        else
+          a.link.dim.gray.f6.f5-ns.dib.mr3(href="/loginPage") Login
+
+    block content

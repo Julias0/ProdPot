@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Registration Form
+
+  form(action="/register", method="post")
+    input#name(type="text", name="name")
+    input#username(type="text", name="username")
+    input#email(type="text", name="email")
+    input#password(type="password", name="password")
+    input#password2(type="password", name="password2")
+    input(type="submit", value="")
